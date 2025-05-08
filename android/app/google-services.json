@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "16249197245",
+    "project_id": "cooking-with-vertex",
+    "storage_bucket": "cooking-with-vertex.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16249197245:android:6f8a7da5092c8cd8879dd4",
+        "android_client_info": {
+          "package_name": "com.cookingwithai.cooking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3fhLodXEQLwO3KnnTCqmi_VWPJBTKuv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

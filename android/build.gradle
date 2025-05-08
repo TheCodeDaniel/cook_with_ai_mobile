@@ -1,3 +1,18 @@
+buildscript {
+    ext.kotlin_version = '2.0.20' // important for firebase
+    repositories{
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.15' // important for firebase
+        classpath 'com.android.tools.build:gradle:7.3.1' // important for firebase
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // important for firebase
+    }
+}
+
+
 allprojects {
     repositories {
         google()
