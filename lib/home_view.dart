@@ -34,9 +34,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
-    model = FirebaseVertexAI.instance.generativeModel(
-      model: 'gemini-2.0-flash-preview-image-generation',
-    );
+    model = FirebaseVertexAI.instance.generativeModel(model: 'gemini-2.0-flash-preview-image-generation');
     super.initState();
   }
 
