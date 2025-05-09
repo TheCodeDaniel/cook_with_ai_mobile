@@ -47,35 +47,37 @@ class _HomeViewState extends State<HomeView> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            spacing: 15,
-            children: [
-              SizedBox(height: 50),
-              TextFormField(
-                controller: queryController,
-                decoration: InputDecoration(
-                  labelText: "Please enter a text to query the model",
-                  suffixIcon: IconButton(
-                    onPressed: () => showModalBottomSheet(
-                      context: context,
-                      builder: (context) => selectImageSheet(context),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              spacing: 15,
+              children: [
+                SizedBox(height: 50),
+                TextFormField(
+                  controller: queryController,
+                  decoration: InputDecoration(
+                    labelText: "Please enter a text to query the model",
+                    suffixIcon: IconButton(
+                      onPressed: () => showModalBottomSheet(
+                        context: context,
+                        builder: (context) => selectImageSheet(context),
+                      ),
+                      icon: selectedImagePath != null
+                          ? CircleAvatar(
+                              backgroundImage: FileImage(File(selectedImagePath!)),
+                              child: Icon(Icons.edit, color: Colors.white),
+                            )
+                          : Icon(Icons.add_a_photo_outlined),
                     ),
-                    icon: selectedImagePath != null
-                        ? CircleAvatar(
-                            backgroundImage: FileImage(File(selectedImagePath!)),
-                            child: Icon(Icons.edit, color: Colors.white),
-                          )
-                        : Icon(Icons.add_a_photo_outlined),
                   ),
                 ),
-              ),
-              TextButton(
-                onPressed: () => queryController.text.isEmpty ? null : readyAiModel(),
-                child: isLoading ? CircularProgressIndicator.adaptive() : Text("Click to query"),
-              ),
-              Text(aiReply),
-            ],
+                TextButton(
+                  onPressed: () => queryController.text.isEmpty ? null : readyAiModel(),
+                  child: isLoading ? CircularProgressIndicator.adaptive() : Text("Click to query"),
+                ),
+                Text(aiReply),
+              ],
+            ),
           ),
         ),
       ),
@@ -114,6 +116,13 @@ class _HomeViewState extends State<HomeView> {
     }
   }
 
+  generateImage() {
+    try {} on Exception catch (e) {
+      inspect(e);
+      log(e.toString());
+    } finally {}
+  }
+
   Future<File?> pickImage(ImageSource source) async {
     try {
       final ImagePicker picker = ImagePicker();
@@ -136,6 +145,9 @@ class _HomeViewState extends State<HomeView> {
       if (pickedFile == null) {
         throw Exception("No image selected.");
       }
+
+      setState(() => aiReply = '');
+      queryController.clear();
 
       return File(pickedFile.path); // ✅ Return the File
     } catch (e) {
