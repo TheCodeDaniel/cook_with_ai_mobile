@@ -37,7 +37,14 @@ dependencies:
 
   # AI model package: https://pub.dev/packages/firebase_vertexai
   firebase_vertexai: ^1.6.0
+
+  # Pick images from user device: https://pub.dev/packages/image_picker
   image_picker: ^1.1.2
+
+  # Request permission actions https://pub.dev/packages/permission_handler
+  permission_handler: ^12.0.0+1
+
+  # Firebase core.. necessary for firebase setup: https://pub.dev/packages/firebase_core
   firebase_core: ^3.13.0
 
 dev_dependencies:
