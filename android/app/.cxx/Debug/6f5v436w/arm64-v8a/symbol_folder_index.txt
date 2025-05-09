@@ -1,0 +1,1 @@
+/Users/daniel/StudioProjects/cooking/build/app/intermediates/cxx/Debug/6f5v436w/obj/arm64-v8a
