@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Cooking with AI"), centerTitle: true),
+      appBar: AppBar(title: Text("Cooking with AI (imagen)"), centerTitle: true),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
@@ -60,8 +60,9 @@ class _HomeViewState extends State<HomeView> {
                   (index) {
                     return Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 100,
-                      decoration: BoxDecoration(image: DecorationImage(image: MemoryImage(aiReply[index]))),
+                      height: 200,
+                      decoration:
+                          BoxDecoration(image: DecorationImage(image: MemoryImage(aiReply[index]), fit: BoxFit.cover)),
                     );
                   },
                 ),
@@ -80,6 +81,7 @@ class _HomeViewState extends State<HomeView> {
 
       final imageList = response.images;
 
+      aiReply.clear();
       for (var img in imageList) {
         setState(() {
           aiReply.add(img.bytesBase64Encoded);
