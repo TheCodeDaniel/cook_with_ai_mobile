@@ -142,9 +142,7 @@ class _HomeViewState extends State<HomeView> {
       XFile? pickedFile = await picker.pickImage(source: source);
 
       // 🔹 Handle No Image Selected
-      if (pickedFile == null) {
-        throw Exception("No image selected.");
-      }
+      if (pickedFile == null) throw Exception("No image selected.");
 
       setState(() => aiReply = '');
       queryController.clear();
